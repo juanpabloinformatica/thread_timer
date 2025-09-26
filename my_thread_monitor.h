@@ -1,6 +1,6 @@
 #ifndef __MY_THREAD_MONITOR__
 #define __MY_THREAD_MONITOR__
-#define THREADS_NUMBER 3
+#define THREADS_NUMBER 4
 #include <stdlib.h>
 #include <assert.h>
 #include <pthread.h>
@@ -15,6 +15,7 @@ struct my_thread_monitor {
 	pthread_t threads[THREADS_NUMBER];
 	sync_thread *sync_mm;
 	sync_thread *sync_hh;
+	sync_thread *sync_display;
 	void (*init_thread)(my_thread_monitor *my_thread_monitor_obj,
 			    int thread_index, void(*callback),
 			    char *thread_name, void *callback_args);
