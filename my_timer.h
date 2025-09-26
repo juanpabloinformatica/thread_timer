@@ -1,5 +1,11 @@
 #ifndef __MY_TIMER__
 #define __MY_TIMER__
+
+#define MAX_SS 59
+#define MAX_MM 59
+#define MAX_HH 59
+
+#include "my_thread_monitor.h"
 #include <stdlib.h>
 #include <assert.h>
 #include <unistd.h>
@@ -16,7 +22,9 @@ struct my_timer {
 	void *(*update_ss)(void *arg);
 	void *(*update_mm)(void *arg);
 	void *(*update_hh)(void *arg);
-	void (*show_current_time)(my_timer *my_timer);
+	void *(*show_current_time)(void *args);
+	void (*start_timer)(my_timer *my_timer);
+	my_thread_monitor *my_thread_monitor;
 };
 my_timer *new_my_timer(void);
 void destroy_my_timer(my_timer *my_timer_obj);
